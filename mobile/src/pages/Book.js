@@ -1,17 +1,17 @@
 import React, {useState} from 'react';
-import { SafeAreaView, Alert, TextInput, Text, AsyncStorage, StyleSheet } from 'react-native';
-import { TouchableOpacity } from 'react-native-gesture-handler';
+import { SafeAreaView, Alert, TextInput, TouchableOpacity, Text, AsyncStorage, StyleSheet } from 'react-native';
 import api from '../services/api';
 
 export default function Book({ navigation }) {
     const [date, setDate] = useState('');
 
+    // Recebe o id que vem do SpotList
     const id = navigation.getParam('id');
 
     async function handleSubmit(){
         const user_id = await AsyncStorage.getItem('user');
         
-        await api.post(`/spots/${id}/bookins`, {
+        await api.post(`/spots/${id}/bookings`, {
             date
         }, {
             headers: { user_id }
@@ -28,7 +28,7 @@ export default function Book({ navigation }) {
 
 
     return (
-        <SafeAreaView>
+        <SafeAreaView styles={styles.container}>
             <Text style={styles.label}>DATA DE INTERESSE * </Text>
             <TextInput 
                 style={styles.input}
@@ -54,7 +54,6 @@ export default function Book({ navigation }) {
 const styles = StyleSheet.create({
     container: {
         margin: 30,
-        
     },
     label: {
         fontWeight: 'bold',

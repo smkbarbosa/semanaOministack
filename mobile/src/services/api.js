@@ -2,6 +2,7 @@ import axios from 'axios';
 
 const api = axios.create({
   baseURL: 'http://localhost:3333',
+  // baseURL: 'https://e0yb8.sse.codesandbox.io', 
   headers: {
     'Access-Control-Allow-Origin': '*',
     'Access-Control-Allow-Headers': '*',
@@ -9,4 +10,3 @@ const api = axios.create({
 });
 
 export default api;
-//exp://a5-u4f.smkbarbosa.mobile.exp.direct:80

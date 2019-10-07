@@ -1,12 +1,12 @@
 import React, { useState, useEffect } from 'react';
-import { SafeAreaView, ScrollView, AsyncStorage, Text, StyleSheet, Image } from 'react-native';
+import { SafeAreaView, ScrollView, AsyncStorage, Text, StyleSheet, Image, TouchableOpacity } from 'react-native';
 
 import SpotList from '../components/SpotList';
 
 import logo from '../assets/logo.png'
 
 
-export default function List() {
+export default function List( navigation ) {
     const [techs, setTechs] = useState([]);
 
     useEffect(() => {
@@ -18,11 +18,18 @@ export default function List() {
         })
     }, []);
 
+    function handlePress() {
+        
+        navigation.navigate('Login');
+    }
+
     return (
         <SafeAreaView style={styles.container}>
-            <Image style={styles.logo} source={logo} />
+            <TouchableOpacity >
+                <Image style={styles.logo} source={logo} />
+            </TouchableOpacity>
 
-            <ScrollView>
+            <ScrollView onPress={handlePress} style={styles.button}>
                 {techs.map(tech => <SpotList key={tech} tech={tech} />)}
             </ScrollView>
         </SafeAreaView>
@@ -38,6 +45,6 @@ const styles = StyleSheet.create({
         height: 32,
         resizeMode: 'contain',
         alignSelf: 'center',
-        marginTop: 10
+        marginTop: 40
     }
 })
