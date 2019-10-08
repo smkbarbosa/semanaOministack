@@ -6,7 +6,7 @@ import SpotList from '../components/SpotList';
 import logo from '../assets/logo.png'
 
 
-export default function List( navigation ) {
+export default function List(navigation) {
     const [techs, setTechs] = useState([]);
 
     useEffect(() => {
@@ -19,15 +19,15 @@ export default function List( navigation ) {
     }, []);
 
     function handlePress() {
-        
+
         navigation.navigate('Login');
     }
 
     return (
         <SafeAreaView style={styles.container}>
-            <TouchableOpacity >
-                <Image style={styles.logo} source={logo} />
-            </TouchableOpacity>
+
+            <Image style={styles.logo} source={logo} />
+
 
             <ScrollView onPress={handlePress} style={styles.button}>
                 {techs.map(tech => <SpotList key={tech} tech={tech} />)}
